@@ -1,0 +1,240 @@
+.platforms-hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(120deg, #eff5ef, #f8f8f1 64%, #edf3ec);
+}
+
+.platforms-hero__inner {
+  position: relative;
+  min-height: 20rem;
+  padding-block: 4.2rem;
+  isolation: isolate;
+}
+
+.platforms-hero h1 {
+  max-width: 48rem;
+  color: var(--color-primary-dark);
+  font-size: clamp(2.5rem, 5.4vw, 4.4rem);
+}
+
+.platforms-hero__inner > p:not(.eyebrow) {
+  max-width: 42rem;
+  margin-block-start: 1rem;
+  color: var(--color-muted);
+  font-size: 1.05rem;
+}
+
+.platforms-hero__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-block-start: 1.5rem;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.platforms-hero__decoration {
+  position: absolute;
+  z-index: -1;
+  inset-block-start: -7rem;
+  inset-inline-end: 3%;
+  color: rgb(23 107 89 / 5%);
+  font-size: 29rem;
+  font-weight: 700;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.platform-directory {
+  background: var(--color-paper);
+}
+
+.platform-directory__heading {
+  margin-block-end: 1.8rem;
+}
+
+.platform-filters {
+  display: grid;
+  grid-template-columns: minmax(15rem, 1.6fr) minmax(10rem, 1fr) minmax(10rem, 1fr);
+  align-items: end;
+  gap: 1rem;
+  padding: 1.2rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: 0 8px 28px rgb(27 62 49 / 4%);
+}
+
+.platform-search {
+  position: relative;
+  display: flex;
+  min-height: 3.2rem;
+  align-items: center;
+}
+
+.platform-search__icon {
+  position: absolute;
+  inset-inline-start: 0.9rem;
+  color: var(--color-muted);
+  font-size: 1.7rem;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.platform-search input,
+.platform-filter select {
+  width: 100%;
+  min-height: 3.2rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  background: #fff;
+  color: var(--color-ink);
+}
+
+.platform-search input {
+  padding: 0.65rem 1rem 0.65rem 2.8rem;
+}
+
+.platform-search input::placeholder {
+  color: #87938e;
+}
+
+.platform-filter {
+  display: grid;
+  gap: 0.3rem;
+  color: var(--color-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.platform-filter select {
+  padding: 0.55rem 0.75rem;
+  font-size: 0.88rem;
+}
+
+.platform-search input:focus,
+.platform-filter select:focus {
+  border-color: var(--color-primary);
+  outline: 3px solid rgb(23 107 89 / 13%);
+}
+
+.platform-directory__meta {
+  display: flex;
+  min-height: 3.8rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.platform-count {
+  color: var(--color-muted);
+  font-size: 0.86rem;
+}
+
+.platform-count strong {
+  color: var(--color-ink);
+}
+
+.platform-clear {
+  padding: 0.35rem 0.6rem;
+  border: 0;
+  border-radius: 0.5rem;
+  background: transparent;
+  color: var(--color-primary);
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.platform-clear:hover {
+  background: var(--color-primary-soft);
+}
+
+.platform-clear[hidden] {
+  display: none;
+}
+
+.platform-grid .content-message {
+  border: 1px solid var(--color-border);
+}
+
+.platforms-note {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-block: 0 5rem;
+  padding: 1.2rem 1.4rem;
+  border: 1px solid #dbe8df;
+  border-radius: var(--radius-md);
+  background: #f0f6f1;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.platforms-note__icon {
+  display: grid;
+  flex: 0 0 auto;
+  width: 2.4rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 0.75rem;
+  background: #fff;
+  color: var(--color-primary);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+@media (max-width: 760px) {
+  .platform-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .platform-search {
+    grid-column: 1 / -1;
+  }
+
+  .platforms-hero__inner {
+    min-height: 18rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .platform-filters {
+    grid-template-columns: 1fr;
+  }
+
+  .platform-search {
+    grid-column: auto;
+  }
+
+  .platforms-hero__inner {
+    min-height: 17rem;
+    padding-block: 3.2rem;
+  }
+
+  .platforms-hero__decoration {
+    inset-inline-end: -4rem;
+    font-size: 22rem;
+  }
+
+  .platform-directory__meta {
+    align-items: start;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.25rem;
+    padding-block: 0.5rem;
+  }
+
+  .platforms-note {
+    align-items: start;
+    margin-block-end: 3rem;
+  }
+}

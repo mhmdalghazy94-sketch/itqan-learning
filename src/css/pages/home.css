@@ -1,0 +1,212 @@
+.hero {
+  display: grid;
+  min-height: min(680px, calc(100svh - 5rem));
+  grid-template-columns: minmax(0, 1.05fr) minmax(22rem, 0.95fr);
+  align-items: center;
+  gap: clamp(2rem, 7vw, 6rem);
+  padding-block: 4rem;
+}
+
+.hero__content {
+  max-width: 39rem;
+}
+
+.hero h1 {
+  color: var(--color-primary-dark);
+}
+
+.hero__lead {
+  margin-block-start: 0.3rem;
+  color: var(--color-accent);
+  font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+  font-weight: 700;
+}
+
+.hero__description {
+  max-width: 38rem;
+  margin-block-start: 1.2rem;
+  color: var(--color-muted);
+  font-size: 1.04rem;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-block-start: 1.8rem;
+}
+
+.hero__note {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-block-start: 1.4rem;
+  color: var(--color-muted);
+  font-size: 0.78rem;
+}
+
+.hero__note span {
+  color: var(--color-accent);
+}
+
+.hero-art {
+  position: relative;
+  display: grid;
+  min-height: 28rem;
+  place-items: center;
+  isolation: isolate;
+}
+
+.hero-art::before {
+  position: absolute;
+  z-index: -2;
+  width: min(85%, 25rem);
+  aspect-ratio: 1;
+  border-radius: 45% 55% 59% 41% / 47% 43% 57% 53%;
+  background: linear-gradient(145deg, #e9f1e6, #d9e9de);
+  content: "";
+}
+
+.hero-art__orbit {
+  position: absolute;
+  z-index: -1;
+  width: 80%;
+  aspect-ratio: 1;
+  border: 1px solid rgb(23 107 89 / 13%);
+  border-radius: 50%;
+}
+
+.hero-art__orbit--two {
+  width: 66%;
+  border-style: dashed;
+  transform: rotate(28deg) scaleY(0.7);
+}
+
+.hero-art__book {
+  position: relative;
+  display: flex;
+  width: 10.5rem;
+  height: 8rem;
+  align-items: end;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0 0.75rem 0.9rem;
+  border-radius: 0.3rem 0.3rem 1rem 1rem;
+  background: linear-gradient(165deg, #fff 0 48%, #f4f5ec 49%);
+  box-shadow: 0 2rem 3rem rgb(23 69 54 / 17%);
+  transform: rotate(-8deg);
+}
+
+.hero-art__book::before {
+  position: absolute;
+  inset-block: 0.5rem 0.75rem;
+  inset-inline-start: 50%;
+  width: 2px;
+  background: #dce5d9;
+  content: "";
+}
+
+.hero-art__book span {
+  width: 2.5rem;
+  height: 0.3rem;
+  border-radius: 99px;
+  background: #bed5c6;
+}
+
+.hero-art__book span:nth-child(2) {
+  width: 1.9rem;
+  background: #e3c58d;
+}
+
+.hero-art__card {
+  position: absolute;
+  display: flex;
+  min-width: 11.5rem;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid rgb(255 255 255 / 80%);
+  border-radius: 1rem;
+  background: rgb(255 255 255 / 92%);
+  box-shadow: var(--shadow-card);
+  color: var(--color-ink);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.hero-art__card--arabic {
+  inset-block-start: 17%;
+  inset-inline-start: 2%;
+  transform: rotate(-5deg);
+}
+
+.hero-art__card--science {
+  inset-block-end: 20%;
+  inset-inline-end: 0;
+  transform: rotate(4deg);
+}
+
+.hero-art__symbol {
+  display: grid;
+  width: 2.2rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 0.7rem;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-size: 1.15rem;
+}
+
+.hero-art__card--science .hero-art__symbol {
+  background: #f9f0df;
+  color: #a36d21;
+}
+
+.hero-art__caption {
+  position: absolute;
+  inset-block-end: 6%;
+  inset-inline-start: 8%;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.85rem;
+  background: #fff;
+  box-shadow: var(--shadow-card);
+  color: var(--color-muted);
+  font-size: 0.7rem;
+  line-height: 1.6;
+}
+
+.hero-art__caption strong {
+  color: var(--color-primary);
+  font-size: 0.82rem;
+}
+
+.hero-art__caption-icon {
+  display: grid;
+  width: 1.8rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.hero-art__spark {
+  position: absolute;
+  color: var(--color-accent);
+  font-size: 2rem;
+}
+
+.hero-art__spark--one {
+  inset-block-start: 13%;
+  inset-inline-end: 18%;
+}
+
+.hero-art__spark--two {
+  inset-block-end: 22%;
+  inset-inline-start: 13%;
+  color: var(--color-primary);
+}

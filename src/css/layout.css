@@ -1,0 +1,139 @@
+.section-shell {
+  width: min(var(--container-width), calc(100% - 3rem));
+  margin-inline: auto;
+}
+
+.site-header {
+  position: sticky;
+  z-index: 20;
+  inset-block-start: 0;
+  border-block-end: 1px solid rgb(225 232 225 / 75%);
+  background: rgb(251 252 249 / 94%);
+  backdrop-filter: blur(16px);
+}
+
+.site-header__inner {
+  display: flex;
+  min-height: 5.4rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.site-header__brand {
+  flex: 0 0 auto;
+}
+
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2.2vw, 2rem);
+}
+
+.site-header__actions {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.section {
+  padding-block: var(--space-section);
+}
+
+.section--platforms {
+  background: var(--color-surface-alt);
+}
+
+.section--categories {
+  background: var(--color-paper);
+}
+
+.section--features {
+  background: var(--color-surface-alt);
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-block-end: 2.5rem;
+}
+
+.section-heading--center {
+  justify-content: center;
+  text-align: center;
+}
+
+.section-heading__description {
+  max-width: 38rem;
+  margin-block-start: 0.7rem;
+  color: var(--color-muted);
+}
+
+.section-heading--center .section-heading__description {
+  margin-inline: auto;
+}
+
+.platform-grid,
+.category-grid,
+.feature-grid {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.platform-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.category-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.feature-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.steps-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  align-items: start;
+  gap: clamp(3rem, 9vw, 8rem);
+}
+
+.closing-cta {
+  position: relative;
+  display: flex;
+  min-height: 18rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  overflow: hidden;
+  margin-block-end: var(--space-section);
+}
+
+.site-footer {
+  padding-block: 4rem 1.5rem;
+  background: #132d28;
+  color: #f6f7f1;
+}
+
+.site-footer__main {
+  display: grid;
+  grid-template-columns: minmax(14rem, 1.2fr) 1fr 1fr;
+  gap: 4rem;
+  padding-block-end: 3rem;
+}
+
+.site-footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block-start: 1.2rem;
+  border-block-start: 1px solid rgb(255 255 255 / 14%);
+}

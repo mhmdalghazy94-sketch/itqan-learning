@@ -1,0 +1,15 @@
+{
+  "name": "إتقان للتعلم",
+  "tagline": "المعرفة تبدأ بخطوة",
+  "description": "منظومة تعليمية تجمع منصات متخصصة في مختلف العلوم والمعارف لتبدأ رحلتك التعليمية من مكان واحد.",
+  "version": "1.0.0",
+  "contactEmail": "info@itqan.learning",
+  "developer": {
+    "name": "فريق إتقان للتعلم",
+    "role": "هندسة وتطوير النظم والمنصات التعليمية"
+  },
+  "socialLinks": {
+    "github": "https://github.com/itqan-learning",
+    "twitter": "https://twitter.com/itqan_learning"
+  }
+}

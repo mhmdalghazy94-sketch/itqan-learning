@@ -1,0 +1,260 @@
+.welcome-local-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.5rem;
+  padding-block: 1rem;
+  border-block-end: 1px solid var(--color-border);
+}
+
+.welcome-local-nav a,
+.welcome-login-link {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.welcome-local-nav a:hover,
+.welcome-login-link:hover {
+  color: var(--color-primary);
+}
+
+.welcome-hero {
+  display: grid;
+  min-height: 22rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 2rem;
+  padding-block: clamp(3rem, 8vw, 6rem);
+}
+
+.welcome-hero__content {
+  max-width: 48rem;
+}
+
+.welcome-hero h1 {
+  color: var(--color-primary-dark);
+  font-size: clamp(2.3rem, 5vw, 4rem);
+}
+
+.welcome-hero__lead {
+  max-width: 42rem;
+  margin-block-start: 0.9rem;
+  color: var(--color-muted);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+}
+
+.welcome-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-block-start: 1.6rem;
+}
+
+.welcome-session-status {
+  min-height: 1.6em;
+  margin-block-start: 1rem;
+  color: var(--color-muted);
+  font-size: 0.85rem;
+}
+
+.welcome-session-status[data-state="error"] {
+  color: var(--color-danger);
+}
+
+.welcome-account-card {
+  display: flex;
+  min-width: 15rem;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.3rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.welcome-account-card__avatar {
+  display: grid;
+  width: 3.5rem;
+  aspect-ratio: 1;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-primary-soft);
+  color: var(--color-primary-dark);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.welcome-account-card__label,
+.welcome-account-card__role {
+  color: var(--color-muted);
+  font-size: 0.82rem;
+}
+
+.welcome-account-card__name {
+  overflow-wrap: anywhere;
+  font-weight: 700;
+}
+
+.welcome-role-section,
+.welcome-library-section {
+  background: var(--color-surface-alt);
+}
+
+.welcome-card-grid,
+.welcome-action-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.welcome-science-card,
+.welcome-action-card {
+  display: grid;
+  align-content: start;
+  gap: 0.6rem;
+  min-height: 11rem;
+  padding: 1.3rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.welcome-science-card:hover,
+.welcome-action-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-card);
+}
+
+.welcome-science-card__icon {
+  display: grid;
+  width: 2.8rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 0.8rem;
+  background: var(--color-primary-soft);
+  color: var(--color-primary-dark);
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.welcome-science-card__description,
+.welcome-action-card__description,
+.welcome-library-card p,
+.welcome-courses-card p {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.welcome-science-card__action {
+  align-self: end;
+  margin-block-start: 0.4rem;
+  color: var(--color-primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.welcome-library-card,
+.welcome-courses-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.welcome-library-card__icon {
+  display: grid;
+  width: 4rem;
+  aspect-ratio: 1;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 1rem;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-size: 1.8rem;
+}
+
+.welcome-library-card > div:nth-child(2),
+.welcome-courses-card > div {
+  flex: 1;
+}
+
+.welcome-library-card h2,
+.welcome-courses-card h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.welcome-library-card p:not(.eyebrow),
+.welcome-courses-card p:not(.eyebrow) {
+  margin-block-start: 0.5rem;
+}
+
+@media (max-width: 760px) {
+  .welcome-local-nav {
+    gap: 0.5rem 1rem;
+  }
+
+  .welcome-hero {
+    min-height: unset;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .welcome-account-card {
+    width: min(100%, 28rem);
+  }
+
+  .welcome-card-grid,
+  .welcome-action-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .welcome-local-nav {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scrollbar-width: thin;
+  }
+
+  .welcome-local-nav a {
+    flex: 0 0 auto;
+  }
+
+  .welcome-hero__actions {
+    align-items: stretch;
+  }
+
+  .welcome-hero__actions .button {
+    flex: 1 1 100%;
+  }
+
+  .welcome-card-grid,
+  .welcome-action-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome-library-card,
+  .welcome-courses-card {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .welcome-science-card,
+  .welcome-action-card {
+    transition: none;
+  }
+}

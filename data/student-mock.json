@@ -1,0 +1,142 @@
+{
+  "student": {
+    "id": "std_9021",
+    "name": "عبد الله بن أحمد المنصور",
+    "email": "abdullah.almansour@example.com",
+    "role": "student",
+    "avatar": "ع",
+    "joinedDate": "سبتمبر 2024",
+    "level": "المستوى الجامعي",
+    "stats": {
+      "enrolledCourses": 4,
+      "completedCourses": 2,
+      "studyHours": 86,
+      "completedAssignments": 14,
+      "points": 1420,
+      "streakDays": 12
+    }
+  },
+  "courses": [
+    {
+      "id": "eng-101",
+      "scienceId": "english",
+      "title": "أساسيات قواعد اللغة الإنجليزية والتحدث للمبتدئين",
+      "instructor": "د. عادل القحطاني",
+      "level": "مبتدئ",
+      "duration": "6 أسابيع",
+      "lessonsCount": 24,
+      "progress": 75,
+      "lastLesson": "lesson-video.html?id=eng-101-les-4",
+      "rating": 4.8,
+      "isFree": true,
+      "thumbnail": "assets/images/courses/eng-101.jpg",
+      "category": "اللغات"
+    },
+    {
+      "id": "math-201",
+      "scienceId": "mathematics",
+      "title": "الجبر الخطي والتفاضل المتقدم للمهندسين والعلماء",
+      "instructor": "أ. د. سمير عبد الرحمن",
+      "level": "متوسط",
+      "duration": "10 أسابيع",
+      "lessonsCount": 36,
+      "progress": 42,
+      "lastLesson": "lesson-reading.html?id=math-201-les-7",
+      "rating": 4.9,
+      "isFree": false,
+      "price": 150,
+      "category": "الرياضيات"
+    },
+    {
+      "id": "phy-102",
+      "scienceId": "physics",
+      "title": "الميكانيكا الكلاسيكية وقوانين الحركة والطاقة",
+      "instructor": "د. منى زهران",
+      "level": "متوسط",
+      "duration": "8 أسابيع",
+      "lessonsCount": 28,
+      "progress": 20,
+      "lastLesson": "lesson-video.html?id=phy-102-les-2",
+      "rating": 4.7,
+      "isFree": true,
+      "category": "العلوم الطبيعية"
+    },
+    {
+      "id": "arb-301",
+      "scienceId": "arabic",
+      "title": "البلاغة العربية: علم المعاني والبيان والبديع",
+      "instructor": "د. خالد التميمي",
+      "level": "متقدم",
+      "duration": "5 أسابيع",
+      "lessonsCount": 18,
+      "progress": 90,
+      "lastLesson": "lesson-audio.html?id=arb-301-les-9",
+      "rating": 5,
+      "isFree": true,
+      "category": "اللغات"
+    }
+  ],
+  "assignments": [
+    {
+      "id": "assign-eng-1",
+      "courseId": "eng-101",
+      "courseTitle": "أساسيات قواعد اللغة الإنجليزية والتحدث",
+      "title": "كتابة مقال تعريفي واستخدام أزمنة الماضي والمضارع",
+      "dueDate": "2026-10-25",
+      "status": "in-progress",
+      "grade": null,
+      "totalGrade": 100,
+      "description": "اكتب نصاً من 250 كلمة يتحدث عن تجربتك التعليمية السابقة مع تطبيق القواعد المشروحة."
+    },
+    {
+      "id": "assign-math-1",
+      "courseId": "math-201",
+      "courseTitle": "الجبر الخطي والتفاضل المتقدم",
+      "title": "حل منظومة المعادلات الخطية باستخدام المحددات ومصفوفة غاوس",
+      "dueDate": "2026-10-30",
+      "status": "pending",
+      "grade": null,
+      "totalGrade": 50,
+      "description": "قم بحل المسائل في ملف PDF المرفق وارفعه قبل نهاية الموعد المحدد."
+    },
+    {
+      "id": "assign-arb-1",
+      "courseId": "arb-301",
+      "courseTitle": "البلاغة العربية",
+      "title": "تحليل الصور البيانية في معلقة امرئ القيس",
+      "dueDate": "2025-04-28",
+      "status": "graded",
+      "grade": 98,
+      "totalGrade": 100,
+      "feedback": "تحليل متميز وفهم دقيق لأسرار الاستعارة والتشبيه.",
+      "description": "استخرج خمس استعارات وثلاثة تشبيهات من الأبيات المحددة مع الشرح."
+    }
+  ],
+  "availableCourses": [
+    {
+      "id": "bio-110",
+      "title": "مدخل إلى علم الأحياء والخلية",
+      "instructor": "د. سارة العتيبي",
+      "level": "مبتدئ",
+      "duration": "5 أسابيع",
+      "lessonsCount": 16,
+      "progress": 0,
+      "rating": 4.7,
+      "isFree": true,
+      "category": "العلوم الطبيعية"
+    },
+    {
+      "id": "prog-120",
+      "title": "مبادئ البرمجة وحل المشكلات",
+      "instructor": "م. فهد الحربي",
+      "level": "مبتدئ",
+      "duration": "7 أسابيع",
+      "lessonsCount": 20,
+      "progress": 0,
+      "rating": 4.8,
+      "isFree": false,
+      "price": 120,
+      "category": "علوم الحاسب"
+    }
+  ]
+}
