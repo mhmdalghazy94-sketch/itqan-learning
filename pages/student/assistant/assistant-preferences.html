@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>إعدادات المساعد | إتقان للتعلم</title>
+    <link rel="stylesheet" href="../../../src/css/variables.css">
+    <link rel="stylesheet" href="../../../src/css/reset.css">
+    <link rel="stylesheet" href="../../../src/css/main.css">
+    <link rel="stylesheet" href="../../../src/css/layout.css">
+    <link rel="stylesheet" href="../../../src/css/components.css">
+    <link rel="stylesheet" href="../../../src/css/pages/student.css">
+    <link rel="stylesheet" href="../../../src/css/responsive.css">
+  </head>
+  <body>
+    <div id="site-header"></div>
+
+    <div class="student-layout">
+      <!-- شريط التنقل الجانبي للطالب -->
+      <aside class="student-sidebar">
+        <a href="../../../pages/student/profile.html" class="student-user-badge" aria-label="فتح الملف الشخصي">
+          <div class="student-avatar" id="student-avatar-letter">ع</div>
+          <div class="student-info">
+            <h4 id="student-display-name">عبد الله المنصور</h4>
+            <p id="student-display-level">طالب • المستوى المتقدم</p>
+          </div>
+        </a>
+
+        <details class="student-sidebar__menu">
+          <summary>قائمة أقسام الطالب <span aria-hidden="true">⌄</span></summary>
+          <nav class="student-nav-group" aria-label="أقسام الطالب">
+            
+          <a href="../../../pages/student/dashboard.html" class="student-nav-link">
+            <span aria-hidden="true">📊</span> الرئيسية
+          </a>
+          <a href="../../../pages/student/courses/my-courses.html" class="student-nav-link">
+            <span aria-hidden="true">📚</span> مقرراتي
+          </a>
+          <a href="../../../pages/student/learning-tools/learning-dashboard.html" class="student-nav-link">
+            <span aria-hidden="true">🛠️</span> التعلم
+          </a>
+          <a href="../../../pages/student/assignments/assignments-dashboard.html" class="student-nav-link">
+            <span aria-hidden="true">📝</span> الواجبات
+          </a>
+          <a href="../../../pages/student/exams/exams-dashboard.html" class="student-nav-link">
+            <span aria-hidden="true">🧪</span> الاختبارات
+          </a>
+          <a href="../../../pages/student/schedule/schedule-dashboard.html" class="student-nav-link">
+            <span aria-hidden="true">🗓️</span> الجدول
+          </a>
+          <a href="../../../pages/student/reports/reports-dashboard.html" class="student-nav-link">
+            <span aria-hidden="true">📈</span> التقارير
+          </a>
+          <a href="../../../pages/student/library/library-dashboard.html" class="student-nav-link">
+            <span aria-hidden="true">📖</span> المكتبة
+          </a>
+          <a href="../../../pages/student/communication/messages.html" class="student-nav-link">
+            <span aria-hidden="true">💬</span> التواصل
+          </a>
+          <a href="../../../pages/student/projects/projects-dashboard.html" class="student-nav-link">
+            <span aria-hidden="true">🧩</span> المشاريع
+          </a>
+          <a href="../../../pages/student/gamification/achievements.html" class="student-nav-link">
+            <span aria-hidden="true">🏅</span> الإنجازات
+          </a>
+          <a href="../../../pages/student/assistant/learning-assistant.html" class="student-nav-link active" aria-current="page">
+            <span aria-hidden="true">✨</span> المساعد التعليمي
+          </a>
+          <a href="../../../pages/student/settings/settings-dashboard.html" class="student-nav-link">
+            <span aria-hidden="true">⚙️</span> الإعدادات
+          </a>
+          </nav>
+          <div class="student-sidebar__secondary">
+            <a href="../../../pages/student/overview.html">النظرة العامة</a>
+            <a href="../../../pages/student/my-activity.html">سجل النشاط</a>
+            <a href="../../../pages/student/my-certificates.html">شهاداتي</a>
+            <a href="../../../pages/student/help-center.html">مركز المساعدة</a>
+          </div>
+        </details>
+
+        <button class="student-theme-toggle" type="button" data-theme-toggle aria-label="تغيير مظهر الألوان" aria-pressed="false">تفعيل المظهر الداكن</button>
+      </aside>
+
+      <!-- المحتوى الرئيسي -->
+      <main class="student-main">
+        <header class="student-header">
+          <div>
+            <h1>إعدادات المساعد</h1>
+            <p>منظومة إتقان للتعلم — تجربة دراسية متكاملة ومنظمة</p>
+          </div>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <a href="../../../pages/student/learning-tools/pomodoro-timer.html" class="button button--secondary button--small">⏱️ مؤقت التركيز</a>
+            <a href="../../../pages/student/courses/courses.html" class="button button--primary button--small">+ مقرر جديد</a>
+          </div>
+        </header>
+
+        <nav class="student-breadcrumb" aria-label="مسار التنقل">
+          <a href="../../../pages/student/dashboard.html">الرئيسية</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">إعدادات المساعد</span>
+        </nav>
+
+        
+      <div class="subnav-tabs" aria-label="التنقل في إعدادات المساعد">
+        <a href="learning-assistant.html" class="subnav-tab">لوحة القسم</a>
+        <a href="ask-question.html" class="subnav-tab">استعراض</a>
+        <a href="explain-concept.html" class="subnav-tab">الأدوات والسجل</a>
+      </div>
+      <section class="student-section-card">
+        <div class="student-section-header"><h2>إعدادات المساعد</h2></div>
+        <div data-student-feature="assistant" data-feature-page="assistant-preferences.html" data-student-loading>
+          <p class="student-loading" role="status">جارٍ تجهيز مساحة الطالب...</p>
+        </div>
+      </section>
+    
+      </main>
+    </div>
+
+    <div id="site-footer"></div>
+
+    <script type="module">
+      import { renderHeader } from '../../../src/js/components/header.js';
+      import { renderFooter } from '../../../src/js/components/footer.js';
+      import { initStudentShell } from '../../../src/js/student/shell.js';
+
+      const headerContainer = document.querySelector('#site-header');
+      const footerContainer = document.querySelector('#site-footer');
+      if (headerContainer) renderHeader(headerContainer, { basePath: '../../../' });
+      if (footerContainer) renderFooter(footerContainer, { basePath: '../../../' });
+      initStudentShell();
+      if (true) {
+        import('../../../src/js/student/workspace.js')
+          .then(({ initStudentWorkspace }) => initStudentWorkspace({ dataUrl: '../../../data/student-mock.json' }))
+          .catch((error) => {
+            console.error('تعذر تحميل وظائف مساحة الطالب:', error);
+            document.querySelectorAll('[data-student-loading]').forEach((container) => {
+              container.textContent = 'تعذر تحميل هذه الصفحة. أعد المحاولة أو تواصل مع الدعم.';
+              container.setAttribute('role', 'alert');
+            });
+          });
+      }
+    </script>
+  </body>
+</html>
