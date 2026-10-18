@@ -1,0 +1,88 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isOwner(userId) {
+      return request.auth != null && request.auth.uid == userId;
+    }
+
+    function hasValidNewProfile(userId) {
+      let data = request.resource.data;
+      return data.keys().hasAll([
+          'uid',
+          'fullName',
+          'email',
+          'role',
+          'status',
+          'createdAt',
+          'termsAcceptedAt'
+        ])
+        && data.keys().hasOnly([
+          'uid',
+          'fullName',
+          'email',
+          'role',
+          'status',
+          'specialization',
+          'bio',
+          'createdAt',
+          'termsAcceptedAt'
+        ])
+        && data.uid == userId
+        && data.email == request.auth.token.email
+        && data.fullName is string
+        && data.fullName.size() >= 2
+        && data.fullName.size() <= 100
+        && data.createdAt == request.time
+        && data.termsAcceptedAt == request.time
+        && (
+          (data.role == 'student' && data.status == 'active')
+          || (
+            data.role == 'teacher'
+            && data.status == 'pending'
+            && data.keys().hasAll(['specialization'])
+            && data.specialization is string
+            && data.specialization.size() >= 2
+            && data.specialization.size() <= 120
+          )
+        )
+        && (
+          !data.keys().hasAny(['bio'])
+          || (data.bio is string && data.bio.size() <= 1000)
+        );
+    }
+
+    match /users/{userId} {
+      allow get: if isOwner(userId);
+      allow list: if false;
+      allow create: if isOwner(userId) && hasValidNewProfile(userId);
+      allow update: if isOwner(userId)
+        && request.resource.data.uid == resource.data.uid
+        && request.resource.data.email == resource.data.email
+        && request.resource.data.role == resource.data.role
+        && request.resource.data.status == resource.data.status
+        && request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(['fullName', 'specialization', 'bio', 'updatedAt'])
+        && request.resource.data.fullName is string
+        && request.resource.data.fullName.size() >= 2
+        && request.resource.data.fullName.size() <= 100
+        && (
+          !request.resource.data.diff(resource.data).affectedKeys().hasAny(['updatedAt'])
+          || request.resource.data.updatedAt == request.time
+        )
+        && (
+          !request.resource.data.keys().hasAny(['bio'])
+          || (request.resource.data.bio is string && request.resource.data.bio.size() <= 1000)
+        )
+        && (
+          !request.resource.data.keys().hasAny(['specialization'])
+          || (
+            request.resource.data.specialization is string
+            && request.resource.data.specialization.size() >= 2
+            && request.resource.data.specialization.size() <= 120
+          )
+        );
+      allow delete: if false;
+    }
+  }
+}
