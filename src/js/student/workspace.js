@@ -1,3 +1,5 @@
+import { getCurrentAccountProfile } from "../services/auth.service.js";
+
 const assignmentStatusLabels = {
   "in-progress": "قيد الإنجاز",
   pending: "غير مسلم",
@@ -37,6 +39,25 @@ export async function initStudentWorkspace({ dataUrl }) {
   }
 
   try {
+    const profile = await getCurrentAccountProfile();
+    if (!profile) {
+      redirectToAccountPage("pages/login.html");
+      return;
+    }
+    if (!profile.emailVerified) {
+      redirectToAccountPage("pages/verify-email.html");
+      return;
+    }
+    if (profile.role !== "student") {
+      redirectToAccountPage("pages/access-denied.html");
+      return;
+    }
+    if (profile.status !== "active") {
+      redirectToAccountPage("pages/account-disabled.html");
+      return;
+    }
+
+    showPreviewNotice();
     const response = await fetch(dataUrl);
     if (!response.ok) {
       throw new Error(`تعذر تحميل بيانات الطالب (HTTP ${response.status}).`);
@@ -52,7 +73,7 @@ export async function initStudentWorkspace({ dataUrl }) {
       throw new Error("بيانات مساحة الطالب غير مكتملة.");
     }
 
-    updateStudentBadge(data.student);
+    updateStudentBadge(data.student, profile);
     if (dashboard || studentFeature) {
       studentFeatures = await import("./features.js");
     }
@@ -75,6 +96,29 @@ export async function initStudentWorkspace({ dataUrl }) {
       showMessage(container, error.message || "تعذر تحميل الصفحة. يرجى المحاولة مرة أخرى.", true);
     });
   }
+}
+
+function redirectToAccountPage(path) {
+  const appBaseUrl = new URL("../../../", import.meta.url);
+  window.location.replace(new URL(path, appBaseUrl));
+}
+
+function showPreviewNotice() {
+  const main = document.querySelector(".student-main");
+  if (!main || main.querySelector("[data-student-preview-notice]")) return;
+
+  const notice = document.createElement("aside");
+  notice.className = "student-preview-notice";
+  notice.dataset.studentPreviewNotice = "";
+  notice.setAttribute("role", "status");
+  const title = element("strong", "", "تنبيه: بيانات هذه المساحة تجريبية");
+  const message = element(
+    "p",
+    "",
+    "تم التحقق من حسابك، لكن المقررات والواجبات والدرجات والعمليات الظاهرة هنا ليست بيانات حقيقية ولا تُزامن مع Firebase حتى تفعيل خدماتها.",
+  );
+  notice.append(title, message);
+  main.prepend(notice);
 }
 
 function renderCourseDetail(container, courses) {
@@ -109,13 +153,14 @@ function renderCourseDetail(container, courses) {
   container.replaceChildren(sectionBlock);
 }
 
-function updateStudentBadge(student) {
+function updateStudentBadge(student, profile) {
   const name = document.querySelector("#student-display-name");
   const level = document.querySelector("#student-display-level");
   const avatar = document.querySelector("#student-avatar-letter");
-  if (name) name.textContent = student.name;
-  if (level) level.textContent = `طالب • ${student.level}`;
-  if (avatar) avatar.textContent = student.avatar || student.name.slice(0, 1);
+  const displayName = profile.displayName || "الطالب";
+  if (name) name.textContent = displayName;
+  if (level) level.textContent = "طالب • بيانات تعليمية تجريبية";
+  if (avatar) avatar.textContent = Array.from(displayName)[0] || student.avatar || "ط";
 }
 
 function renderDashboard(container, data) {

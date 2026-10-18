@@ -1,98 +1,56 @@
 [
   {
     "id": "arabic",
-    "name": "اللغة العربية وآدابها",
+    "name": "إتقان للغة العربية",
     "category": "languages",
-    "description": "تعلم فروع لغة الضاد من النحو والصرف والبلاغة والأدب والقراءة والتعبير.",
+    "description": "منصة قيد التطوير لتعليم اللغة العربية وآدابها.",
     "icon": "ع",
-    "repositoryUrl": "https://github.com/itqan-learning/arabic-learning",
-    "status": "in-development",
-    "studentsCount": 1250,
-    "coursesCount": 18,
-    "color": "#176b59"
-  },
-  {
-    "id": "english",
-    "name": "اللغة الإنجليزية",
-    "category": "languages",
-    "description": "تعلّم اللغة الإنجليزية من المستويات التأسيسية حتى المتقدمة مع مهارات المحادثة والقواعد.",
-    "icon": "A",
-    "repositoryUrl": "https://github.com/itqan-learning/english-learning",
-    "status": "ready",
-    "studentsCount": 2400,
-    "coursesCount": 26,
-    "color": "#2a5b88"
-  },
-  {
-    "id": "mathematics",
-    "name": "الرياضيات",
-    "category": "mathematics",
-    "description": "تأسيس متين في الحساب، الجبر، الهندسة، والتفاضل والتكامل مع تطبيقات عملية.",
-    "icon": "∑",
-    "repositoryUrl": "https://github.com/itqan-learning/math-learning",
-    "status": "ready",
-    "studentsCount": 1890,
-    "coursesCount": 22,
-    "color": "#8b4b24"
-  },
-  {
-    "id": "physics",
-    "name": "الفيزياء",
-    "category": "natural-sciences",
-    "description": "استكشف قوانين الكون، الميكانيكا، الكهرومغناطيسية، والفيزياء الحديثة.",
-    "icon": "ϕ",
-    "repositoryUrl": "https://github.com/itqan-learning/physics-learning",
-    "status": "in-development",
-    "studentsCount": 980,
-    "coursesCount": 14,
-    "color": "#42588f"
-  },
-  {
-    "id": "chemistry",
-    "name": "الكيمياء",
-    "category": "natural-sciences",
-    "description": "دراسة بنية المادة، التفاعلات الكيميائية، الكيمياء العضوية وغير العضوية.",
-    "icon": "⚗",
-    "repositoryUrl": "https://github.com/itqan-learning/chemistry-learning",
-    "status": "coming-soon",
-    "studentsCount": 750,
-    "coursesCount": 12,
-    "color": "#2e7d71"
+    "repositoryUrl": "",
+    "status": "in-development"
   },
   {
     "id": "islamic-studies",
-    "name": "الدراسات الإسلامية",
+    "name": "إتقان للدراسات الإسلامية",
     "category": "islamic-studies",
-    "description": "مسارات تعليمية مؤصلة في علوم القرآن والحديث والفقه والعقيدة.",
+    "description": "منصة قيد الإعداد لمسارات تعليمية في الدراسات الإسلامية.",
     "icon": "✧",
-    "repositoryUrl": "https://github.com/itqan-learning/islamic-learning",
-    "status": "ready",
-    "studentsCount": 3100,
-    "coursesCount": 34,
-    "color": "#1b6342"
+    "repositoryUrl": "",
+    "status": "coming-soon"
   },
   {
-    "id": "history",
-    "name": "التاريخ والحضارات",
-    "category": "history",
-    "description": "رحلة عبر التاريخ الإنساني والإسلامي، مع قراءة تحليلية للأحداث والشخصيات.",
-    "icon": "⌛",
-    "repositoryUrl": "https://github.com/itqan-learning/history-learning",
-    "status": "coming-soon",
-    "studentsCount": 620,
-    "coursesCount": 9,
-    "color": "#7a5a3a"
+    "id": "english",
+    "name": "إتقان للغة الإنجليزية",
+    "category": "languages",
+    "description": "منصة قيد الإعداد لتعليم اللغة الإنجليزية.",
+    "icon": "A",
+    "repositoryUrl": "",
+    "status": "coming-soon"
   },
   {
-    "id": "computer-science",
-    "name": "علوم الحاسب والبرمجة",
-    "category": "technology",
-    "description": "تعلم الخوارزميات، البرمجة، تطوير الويب، وقواعد البيانات والذكاء الاصطناعي.",
-    "icon": "⌘",
-    "repositoryUrl": "https://github.com/itqan-learning/cs-learning",
-    "status": "ready",
-    "studentsCount": 4200,
-    "coursesCount": 40,
-    "color": "#105652"
+    "id": "mathematics",
+    "name": "إتقان للرياضيات",
+    "category": "mathematics",
+    "description": "منصة قيد الإعداد لتعليم الرياضيات.",
+    "icon": "∑",
+    "repositoryUrl": "",
+    "status": "coming-soon"
+  },
+  {
+    "id": "physics",
+    "name": "إتقان للفيزياء",
+    "category": "natural-sciences",
+    "description": "منصة قيد الإعداد لتعليم الفيزياء.",
+    "icon": "ϕ",
+    "repositoryUrl": "",
+    "status": "coming-soon"
+  },
+  {
+    "id": "chemistry",
+    "name": "إتقان للكيمياء",
+    "category": "natural-sciences",
+    "description": "منصة قيد الإعداد لتعليم الكيمياء.",
+    "icon": "⚗",
+    "repositoryUrl": "",
+    "status": "coming-soon"
   }
 ]

@@ -122,6 +122,14 @@
 }
 
 @media (max-width: 520px) {
+  .home-library {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .home-library .button {
+    grid-column: 1 / -1;
+  }
+
   .section {
     padding-block: 4rem;
   }

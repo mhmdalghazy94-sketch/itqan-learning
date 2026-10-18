@@ -425,7 +425,9 @@ function generateStudentHtml(pageTitle, relPath, activeTab, innerContent) {
 }
 
 // 1. Write student main pages
+// Keep the Firebase-connected dashboards intact when regenerating prototype pages.
 studentMainPages.forEach(p => {
+  if (p.file === 'dashboard.html') return;
   const filePath = path.join('pages/student', p.file);
   let content = '';
   const studentPageTab = {
@@ -855,6 +857,7 @@ learningToolPages.forEach(p => {
 
 // 4. Write assignments pages
 assignmentPages.forEach(p => {
+  if (p.file === 'assignments-dashboard.html') return;
   const filePath = path.join('pages/student/assignments', p.file);
   let content = `
     <div class="subnav-tabs">
@@ -950,4 +953,4 @@ studentPageFamilies.forEach((family) => {
   });
 });
 
-console.log(`Successfully generated ${studentMainPages.length + coursePages.length + learningToolPages.length + assignmentPages.length + studentPageFamilies.reduce((count, family) => count + family.pages.length, 0)} student pages!`);
+console.log(`Successfully generated ${studentMainPages.length + coursePages.length + learningToolPages.length + assignmentPages.length + studentPageFamilies.reduce((count, family) => count + family.pages.length, 0) - 2} student pages!`);

@@ -4,75 +4,34 @@
       "id": "islamic-library",
       "name": "المكتبة الإسلامية",
       "icon": "✧",
-      "booksCount": 120,
-      "description": "كتب التفسير، الحديث الشريف، الفقه وأصوله، والعقيدة الإسلامية.",
-      "color": "#176b59"
+      "description": "مساحة مقترحة لمصادر القرآن والتفسير والحديث والفقه والعقيدة.",
+      "repositoryUrl": "",
+      "status": "in-development"
     },
     {
       "id": "arabic-library",
       "name": "مكتبة اللغة العربية",
       "icon": "ع",
-      "booksCount": 85,
-      "description": "أمهات كتب النحو والصرف والبلاغة والمعاجم ودواوين الأدب والشعر.",
-      "color": "#2a5b88"
+      "description": "مساحة مقترحة لمراجع اللغة والنحو والصرف والبلاغة والأدب.",
+      "repositoryUrl": "",
+      "status": "in-development"
     },
     {
       "id": "science-library",
       "name": "مكتبة العلوم والرياضيات",
       "icon": "∑",
-      "booksCount": 64,
-      "description": "كتب ومراجع الرياضيات، الفيزياء، الكيمياء، والفلك والعلوم الطبيعية.",
-      "color": "#8b4b24"
+      "description": "مساحة مقترحة لمصادر العلوم الطبيعية والرياضيات.",
+      "repositoryUrl": "",
+      "status": "in-development"
     },
     {
       "id": "history-library",
       "name": "مكتبة التاريخ والحضارات",
       "icon": "⌛",
-      "booksCount": 42,
-      "description": "موسوعات التاريخ القديم والإسلامي والمعاصر وسير الأعلام والمؤرخين.",
-      "color": "#7a5a3a"
+      "description": "مساحة مقترحة لمراجع التاريخ والحضارات.",
+      "repositoryUrl": "",
+      "status": "in-development"
     }
   ],
-  "books": [
-    {
-      "id": "book-1",
-      "title": "مقدمة ابن خلدون",
-      "author": "عبد الرحمن بن خلدون",
-      "category": "مكتبة التاريخ والحضارات",
-      "pages": 650,
-      "format": "PDF",
-      "size": "18 MB",
-      "downloadUrl": "#"
-    },
-    {
-      "id": "book-2",
-      "title": "الكتاب لسيبويه",
-      "author": "أبو بشر عمرو بن عثمان (سيبويه)",
-      "category": "مكتبة اللغة العربية",
-      "pages": 940,
-      "format": "PDF",
-      "size": "24 MB",
-      "downloadUrl": "#"
-    },
-    {
-      "id": "book-3",
-      "title": "جامع البيان في تأويل القرآن",
-      "author": "ابن جرير الطبري",
-      "category": "المكتبة الإسلامية",
-      "pages": 1400,
-      "format": "PDF",
-      "size": "45 MB",
-      "downloadUrl": "#"
-    },
-    {
-      "id": "book-4",
-      "title": "المبادئ الرياضية للفلسفة الطبيعية",
-      "author": "إسحاق نيوتن (ترجمة علمية)",
-      "category": "مكتبة العلوم والرياضيات",
-      "pages": 520,
-      "format": "PDF",
-      "size": "12 MB",
-      "downloadUrl": "#"
-    }
-  ]
+  "resources": []
 }

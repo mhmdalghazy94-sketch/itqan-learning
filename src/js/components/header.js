@@ -12,8 +12,10 @@ const headerMarkup = (basePath, currentPage) => `
         <a href="${basePath}index.html"${currentPage === "home" ? ' aria-current="page"' : ""}>الرئيسية</a>
         <a href="${basePath}pages/platforms.html"${currentPage === "platforms" ? ' aria-current="page"' : ""}>المنصات</a>
         <a href="${basePath}pages/categories.html"${currentPage === "categories" ? ' aria-current="page"' : ""}>التصنيفات</a>
-        <a href="${basePath}pages/about.html">من نحن</a>
-        <a href="${basePath}pages/contact.html">تواصل معنا</a>
+        <a href="${basePath}pages/library.html"${currentPage === "library" ? ' aria-current="page"' : ""}>المكتبة</a>
+        <a href="${basePath}pages/site/about.html">من نحن</a>
+        <a href="${basePath}pages/site/site-guide.html">دليل الموقع</a>
+        <a href="${basePath}pages/site/contact.html">تواصل معنا</a>
       </nav>
       <div class="site-header__actions">
         <a class="site-header__login" href="${basePath}pages/login.html">تسجيل الدخول</a>

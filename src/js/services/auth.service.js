@@ -17,6 +17,8 @@ import {
 } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore.js";
 import { auth, db } from "./firebase.js";
 
+const appBaseUrl = new URL("../../../", import.meta.url);
+
 export class AuthFlowError extends Error {
   constructor(code) {
     super(code);
@@ -58,7 +60,10 @@ export async function registerAccount({ fullName, email, password, role, special
 
   let verificationSent = true;
   try {
-    await sendEmailVerification(user);
+    await sendEmailVerification(user, {
+      url: new URL("pages/welcome.html", appBaseUrl).href,
+      handleCodeInApp: false,
+    });
   } catch (error) {
     console.error("تم حفظ الحساب لكن تعذر إرسال رسالة التحقق:", error);
     verificationSent = false;
@@ -101,7 +106,10 @@ export async function loginAccount(email, password) {
 
 export async function requestPasswordReset(email) {
   try {
-    await sendPasswordResetEmail(auth, email);
+    await sendPasswordResetEmail(auth, email, {
+      url: new URL("pages/reset-password.html", appBaseUrl).href,
+      handleCodeInApp: false,
+    });
   } catch (error) {
     if (error.code === "auth/user-not-found") return;
     throw error;
@@ -118,12 +126,19 @@ export async function sendVerificationEmail() {
     throw new AuthFlowError("sign-in-required-for-verification");
   }
   if (auth.currentUser.emailVerified) return false;
-  await sendEmailVerification(auth.currentUser);
+  await sendEmailVerification(auth.currentUser, {
+    url: new URL("pages/welcome.html", appBaseUrl).href,
+    handleCodeInApp: false,
+  });
   return true;
 }
 
 export function verifyEmailAction(code) {
   return applyActionCode(auth, code);
+}
+
+export function signOutCurrentAccount() {
+  return signOut(auth);
 }
 
 export function getCurrentAccountProfile() {
@@ -172,6 +187,7 @@ async function readProfile(uid) {
     email: profile.email,
     role: profile.role,
     status: profile.status,
+    specialization: typeof profile.specialization === "string" ? profile.specialization : "",
   };
 }
 
