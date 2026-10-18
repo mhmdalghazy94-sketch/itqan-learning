@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="استكشف دليل المكتبات التعليمية في منصة إتقان.">
+    <title>المكتبات التعليمية | إتقان للتعلم</title>
+    <link rel="stylesheet" href="../src/css/variables.css">
+    <link rel="stylesheet" href="../src/css/reset.css">
+    <link rel="stylesheet" href="../src/css/main.css">
+    <link rel="stylesheet" href="../src/css/layout.css">
+    <link rel="stylesheet" href="../src/css/components.css">
+    <link rel="stylesheet" href="../src/css/pages/platforms.css">
+    <link rel="stylesheet" href="../src/css/pages/library.css">
+    <link rel="stylesheet" href="../src/css/responsive.css">
+    <script type="module" src="../src/js/pages/library.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">انتقل إلى المحتوى</a>
+    <div id="site-header"></div>
+    <main id="main-content" class="library-page">
+      <section class="platforms-hero" aria-labelledby="page-title">
+        <div class="section-shell platforms-hero__inner">
+          <p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span> مصادر المعرفة</p>
+          <h1 id="page-title">المكتبات التعليمية</h1>
+          <p>دليل للمكتبات المتخصصة المقترحة ضمن منظومة إتقان. تظهر الروابط عند تجهيز المستودعات الفعلية ومراجعة مصادرها.</p>
+          <a class="platforms-hero__link" href="#library-directory">استكشف المكتبات <span aria-hidden="true">↓</span></a>
+        </div>
+      </section>
+
+      <section class="section library-directory" id="library-directory" aria-labelledby="library-directory-title">
+        <div class="section-shell">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">مستودع المكتبة الرئيسي</p>
+              <h2 id="library-directory-title">اختر مجال المكتبة</h2>
+              <p class="section-heading__description">ابحث في أنواع المكتبات المخطط لها. لا تعرض هذه الصفحة عناوين أو أعدادًا تجريبية على أنها موارد متاحة.</p>
+            </div>
+          </div>
+          <label class="library-search">
+            <span class="visually-hidden">ابحث عن مكتبة</span>
+            <input id="library-search" type="search" placeholder="ابحث باسم المكتبة أو موضوعها..." autocomplete="off">
+          </label>
+          <p id="library-count" class="platform-count" role="status" aria-live="polite">جارٍ تحميل المكتبات…</p>
+          <div id="library-grid" class="platform-grid" aria-live="polite">
+            <p class="content-message" role="status">جارٍ تحميل المكتبات…</p>
+          </div>
+          <p class="library-note">روابط مستودعات المكتبات المستقلة غير مهيأة في المشروع حتى الآن. لن يظهر رابط خارجي قبل إضافة عنوان صالح والتحقق من نشر الموقع.</p>
+        </div>
+      </section>
+    </main>
+    <div id="site-footer"></div>
+    <noscript><p class="noscript-message">يرجى تفعيل JavaScript لتحميل دليل المكتبات.</p></noscript>
+  </body>
+</html>

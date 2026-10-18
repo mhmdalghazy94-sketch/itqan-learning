@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../src/css/components.css">
     <link rel="stylesheet" href="../src/css/pages/platforms.css">
     <link rel="stylesheet" href="../src/css/responsive.css">
+    <script type="module" src="../src/js/pages/sciences.js"></script>
   </head>
   <body>
     <div id="site-header"></div>
@@ -22,65 +23,36 @@
             <p class="eyebrow"><span class="eyebrow__dot"></span> فروع المعرفة والتعلم</p>
             <h1>مجالات العلوم المتخصصة</h1>
             <p class="section-heading__description">
-              تصفح مجالات العلوم والمعارف المتاحة في إتقان للتعلم؛ حيث يمتلك كل مجال مستودعاً ومقررات تعليمية مستقلة ومنهجية.
+              تعرّف على المجالات والمنصات التعليمية المقترحة، وتحقق من حالة كل منصة قبل الانتقال إليها. لا يظهر رابط المنصة إلا بعد إضافة عنوانها المنشور.
             </p>
           </div>
         </div>
 
-        <div class="platform-grid" id="sciences-grid">
-          <!-- Dynamic Sciences Cards -->
+        <form class="platform-filters" role="search" aria-label="البحث في مجالات العلوم">
+          <label class="platform-search">
+            <span class="platform-search__icon" aria-hidden="true">⌕</span>
+            <span class="visually-hidden">ابحث عن مجال</span>
+            <input id="science-search" type="search" placeholder="ابحث عن مجال أو تخصص..." autocomplete="off">
+          </label>
+          <label class="platform-filter">
+            <span>حالة المنصة</span>
+            <select id="science-status">
+              <option value="all">جميع الحالات</option>
+              <option value="available">متاحة</option>
+              <option value="in-development">قيد التطوير</option>
+              <option value="coming-soon">قريبًا</option>
+            </select>
+          </label>
+        </form>
+        <p id="science-count" class="platform-count" role="status" aria-live="polite">جارٍ تحميل المجالات…</p>
+        <div class="platform-grid" id="sciences-grid" aria-live="polite">
+          <p class="content-message" role="status">جارٍ تحميل المجالات…</p>
         </div>
       </section>
     </main>
 
     <div id="site-footer"></div>
 
-    <script type="module">
-      import { renderHeader } from '../src/js/components/header.js';
-      import { renderFooter } from '../src/js/components/footer.js';
-
-      const header = document.querySelector('#site-header');
-      const footer = document.querySelector('#site-footer');
-      if (header) renderHeader(header, { basePath: '../', currentPage: 'platforms' });
-      if (footer) renderFooter(footer, { basePath: '../' });
-
-      async function loadSciences() {
-        const container = document.getElementById('sciences-grid');
-        try {
-          const res = await fetch('../data/sciences.json');
-          const sciences = await res.json();
-
-          container.innerHTML = sciences.map(s => `
-            <article class="platform-card platform-card--featured">
-              <div class="platform-card__top">
-                <span class="platform-card__icon" style="background:${s.color}15; color:${s.color}">${s.icon}</span>
-                <span class="status-badge ${s.status === 'ready' ? 'status-badge--available' : 'status-badge--in-development'}">
-                  ${s.status === 'ready' ? 'متاح ومفعل' : 'قيد التطوير والتجهيز'}
-                </span>
-              </div>
-              <h2 class="platform-card__title">${s.name}</h2>
-              <p class="platform-card__description">${s.description}</p>
-              
-              <div style="font-size:0.82rem; color:var(--color-muted); margin-bottom:1rem; display:flex; gap:1rem;">
-                <span>📚 ${s.coursesCount} مقرراً</span>
-                <span>👥 ${s.studentsCount.toLocaleString('ar-EG')} طالباً</span>
-              </div>
-
-              <div class="platform-card__actions">
-                <a href="science-details.html?id=${s.id}" class="button button--primary button--small">استعراض المجال والدورات ←</a>
-                <a href="${s.repositoryUrl}" target="_blank" rel="noopener noreferrer" class="platform-card__action platform-card__action--visit">
-                  المستودع البرمجي ↗
-                </a>
-              </div>
-            </article>
-          `).join('');
-        } catch (e) {
-          console.error(e);
-          container.innerHTML = '<p class="content-message content-message--error">تعذر تحميل بيانات مجالات العلوم.</p>';
-        }
-      }
-
-      loadSciences();
-    </script>
+    <noscript><p class="noscript-message">يرجى تفعيل JavaScript لتحميل المجالات واستخدام البحث والتصفية.</p></noscript>
   </body>
 </html>
