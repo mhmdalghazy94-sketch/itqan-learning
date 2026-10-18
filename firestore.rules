@@ -52,6 +52,51 @@ service cloud.firestore {
         );
     }
 
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isActiveTeacher(userId) {
+      return signedIn()
+        && request.auth.uid == userId
+        && request.auth.token.email_verified == true
+        && exists(/databases/$(database)/documents/users/$(userId))
+        && get(/databases/$(database)/documents/users/$(userId)).data.role == 'teacher'
+        && get(/databases/$(database)/documents/users/$(userId)).data.status == 'active';
+    }
+
+    function isActiveStudent(userId) {
+      return signedIn()
+        && request.auth.uid == userId
+        && request.auth.token.email_verified == true
+        && exists(/databases/$(database)/documents/users/$(userId))
+        && get(/databases/$(database)/documents/users/$(userId)).data.role == 'student'
+        && get(/databases/$(database)/documents/users/$(userId)).data.status == 'active';
+    }
+
+    function ownsCourse(courseId) {
+      return signedIn()
+        && exists(/databases/$(database)/documents/courses/$(courseId))
+        && get(/databases/$(database)/documents/courses/$(courseId)).data.ownerId == request.auth.uid
+        && isActiveTeacher(request.auth.uid);
+    }
+
+    function isEnrolled(courseId, studentId) {
+      return signedIn()
+        && request.auth.uid == studentId
+        && exists(/databases/$(database)/documents/course_enrollments/$(courseId + '--' + studentId))
+        && get(/databases/$(database)/documents/course_enrollments/$(courseId + '--' + studentId)).data.courseId == courseId
+        && get(/databases/$(database)/documents/course_enrollments/$(courseId + '--' + studentId)).data.studentId == studentId
+        && get(/databases/$(database)/documents/courses/$(courseId)).data.status == 'published';
+    }
+
+    function ownsAssignment(assignmentId) {
+      return signedIn()
+        && exists(/databases/$(database)/documents/assignments/$(assignmentId))
+        && get(/databases/$(database)/documents/assignments/$(assignmentId)).data.teacherId == request.auth.uid
+        && ownsCourse(get(/databases/$(database)/documents/assignments/$(assignmentId)).data.courseId);
+    }
+
     match /users/{userId} {
       allow get: if isOwner(userId);
       allow list: if false;
@@ -83,6 +128,240 @@ service cloud.firestore {
           )
         );
       allow delete: if false;
+    }
+
+    match /courses/{courseId} {
+      allow get, list: if resource.data.status == 'published'
+        || (signedIn() && resource.data.ownerId == request.auth.uid
+          && isActiveTeacher(request.auth.uid));
+      allow create: if isActiveTeacher(request.auth.uid)
+        && request.resource.data.keys().hasAll([
+          'ownerId', 'title', 'description', 'category', 'level', 'language',
+          'isFree', 'status', 'createdAt', 'updatedAt'
+        ])
+        && request.resource.data.keys().hasOnly([
+          'ownerId', 'title', 'description', 'category', 'level', 'language',
+          'isFree', 'status', 'createdAt', 'updatedAt'
+        ])
+        && request.resource.data.ownerId == request.auth.uid
+        && request.resource.data.title is string
+        && request.resource.data.title.size() >= 2
+        && request.resource.data.title.size() <= 120
+        && request.resource.data.description is string
+        && request.resource.data.description.size() <= 2000
+        && request.resource.data.category is string
+        && request.resource.data.category.size() >= 2
+        && request.resource.data.category.size() <= 80
+        && request.resource.data.level is string
+        && request.resource.data.level.size() >= 2
+        && request.resource.data.level.size() <= 60
+        && request.resource.data.language == 'ar'
+        && request.resource.data.isFree == true
+        && request.resource.data.status == 'draft'
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.updatedAt == request.time;
+      allow update: if signedIn()
+        && resource.data.ownerId == request.auth.uid
+        && isActiveTeacher(request.auth.uid)
+        && request.resource.data.ownerId == resource.data.ownerId
+        && request.resource.data.createdAt == resource.data.createdAt
+        && request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(['title', 'description', 'category', 'level', 'language', 'status', 'updatedAt'])
+        && request.resource.data.title is string
+        && request.resource.data.title.size() >= 2
+        && request.resource.data.title.size() <= 120
+        && request.resource.data.description is string
+        && request.resource.data.description.size() <= 2000
+        && request.resource.data.category is string
+        && request.resource.data.category.size() >= 2
+        && request.resource.data.category.size() <= 80
+        && request.resource.data.level is string
+        && request.resource.data.level.size() >= 2
+        && request.resource.data.level.size() <= 60
+        && request.resource.data.language == 'ar'
+        && request.resource.data.status in ['draft', 'published']
+        && request.resource.data.updatedAt == request.time;
+      allow delete: if false;
+
+      match /lessons/{lessonId} {
+        allow get, list: if signedIn()
+          && ((resource.data.ownerId == request.auth.uid
+              && ownsCourse(courseId))
+            || (isActiveStudent(request.auth.uid)
+              && isEnrolled(courseId, request.auth.uid)));
+        allow create: if isActiveTeacher(request.auth.uid)
+          && ownsCourse(courseId)
+          && request.resource.data.keys().hasAll([
+            'ownerId', 'title', 'content', 'position', 'createdAt', 'updatedAt'
+          ])
+          && request.resource.data.keys().hasOnly([
+            'ownerId', 'title', 'content', 'position', 'createdAt', 'updatedAt'
+          ])
+          && request.resource.data.ownerId == request.auth.uid
+          && request.resource.data.title is string
+          && request.resource.data.title.size() >= 2
+          && request.resource.data.title.size() <= 120
+          && request.resource.data.content is string
+          && request.resource.data.content.size() >= 2
+          && request.resource.data.content.size() <= 20000
+          && request.resource.data.position is int
+          && request.resource.data.position >= 0
+          && request.resource.data.createdAt == request.time
+          && request.resource.data.updatedAt == request.time;
+        allow update: if signedIn()
+          && resource.data.ownerId == request.auth.uid
+          && ownsCourse(courseId)
+          && request.resource.data.ownerId == resource.data.ownerId
+          && request.resource.data.createdAt == resource.data.createdAt
+          && request.resource.data.diff(resource.data).affectedKeys()
+            .hasOnly(['title', 'content', 'position', 'updatedAt'])
+          && request.resource.data.title is string
+          && request.resource.data.title.size() >= 2
+          && request.resource.data.title.size() <= 120
+          && request.resource.data.content is string
+          && request.resource.data.content.size() >= 2
+          && request.resource.data.content.size() <= 20000
+          && request.resource.data.position is int
+          && request.resource.data.position >= 0
+          && request.resource.data.updatedAt == request.time;
+        allow delete: if false;
+      }
+    }
+
+    match /course_enrollments/{enrollmentId} {
+      allow get, list: if signedIn()
+        && (resource.data.studentId == request.auth.uid
+          || ownsCourse(resource.data.courseId));
+      allow create: if isActiveStudent(request.auth.uid)
+        && request.resource.data.keys().hasAll(['courseId', 'studentId', 'createdAt'])
+        && request.resource.data.keys().hasOnly(['courseId', 'studentId', 'createdAt'])
+        && request.resource.data.studentId == request.auth.uid
+        && request.resource.data.courseId is string
+        && request.resource.data.courseId.size() <= 150
+        && enrollmentId == request.resource.data.courseId + '--' + request.auth.uid
+        && request.resource.data.createdAt == request.time
+        && exists(/databases/$(database)/documents/courses/$(request.resource.data.courseId))
+        && get(/databases/$(database)/documents/courses/$(request.resource.data.courseId)).data.status == 'published'
+        && get(/databases/$(database)/documents/courses/$(request.resource.data.courseId)).data.isFree == true;
+      allow update, delete: if false;
+    }
+
+    match /assignments/{assignmentId} {
+      allow get, list: if signedIn()
+        && ((resource.data.teacherId == request.auth.uid
+            && isActiveTeacher(request.auth.uid))
+          || (resource.data.status == 'published'
+            && isActiveStudent(request.auth.uid)
+            && isEnrolled(resource.data.courseId, request.auth.uid)));
+      allow create: if isActiveTeacher(request.auth.uid)
+        && request.resource.data.keys().hasAll([
+          'courseId', 'teacherId', 'title', 'instructions', 'dueAt', 'maxScore',
+          'status', 'createdAt', 'updatedAt'
+        ])
+        && request.resource.data.keys().hasOnly([
+          'courseId', 'teacherId', 'title', 'instructions', 'dueAt', 'maxScore',
+          'status', 'createdAt', 'updatedAt'
+        ])
+        && request.resource.data.teacherId == request.auth.uid
+        && request.resource.data.courseId is string
+        && request.resource.data.courseId.size() <= 150
+        && ownsCourse(request.resource.data.courseId)
+        && request.resource.data.title is string
+        && request.resource.data.title.size() >= 2
+        && request.resource.data.title.size() <= 120
+        && request.resource.data.instructions is string
+        && request.resource.data.instructions.size() >= 2
+        && request.resource.data.instructions.size() <= 5000
+        && request.resource.data.dueAt is timestamp
+        && request.resource.data.maxScore is number
+        && request.resource.data.maxScore >= 1
+        && request.resource.data.maxScore <= 1000
+        && request.resource.data.status == 'draft'
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.updatedAt == request.time;
+      allow update: if signedIn()
+        && resource.data.teacherId == request.auth.uid
+        && resource.data.status == 'draft'
+        && ownsCourse(resource.data.courseId)
+        && request.resource.data.courseId == resource.data.courseId
+        && request.resource.data.teacherId == resource.data.teacherId
+        && request.resource.data.createdAt == resource.data.createdAt
+        && request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(['title', 'instructions', 'dueAt', 'maxScore', 'status', 'updatedAt'])
+        && request.resource.data.title is string
+        && request.resource.data.title.size() >= 2
+        && request.resource.data.title.size() <= 120
+        && request.resource.data.instructions is string
+        && request.resource.data.instructions.size() >= 2
+        && request.resource.data.instructions.size() <= 5000
+        && request.resource.data.dueAt is timestamp
+        && request.resource.data.maxScore is number
+        && request.resource.data.maxScore >= 1
+        && request.resource.data.maxScore <= 1000
+        && request.resource.data.status in ['draft', 'published']
+        && request.resource.data.updatedAt == request.time;
+      allow delete: if false;
+
+      match /submissions/{studentId} {
+        allow get, list: if isActiveStudent(studentId)
+          || (signedIn() && ownsAssignment(assignmentId));
+        allow create: if isActiveStudent(studentId)
+          && get(/databases/$(database)/documents/assignments/$(assignmentId)).data.status == 'published'
+          && isEnrolled(
+            get(/databases/$(database)/documents/assignments/$(assignmentId)).data.courseId,
+            studentId
+          )
+          && request.resource.data.keys().hasAll(['studentId', 'answer', 'status', 'updatedAt'])
+          && request.resource.data.keys().hasOnly([
+            'studentId', 'answer', 'status', 'updatedAt', 'submittedAt'
+          ])
+          && request.resource.data.studentId == studentId
+          && request.resource.data.answer is string
+          && request.resource.data.answer.size() <= 20000
+          && request.resource.data.status in ['draft', 'submitted']
+          && request.resource.data.updatedAt == request.time
+          && ((request.resource.data.status == 'draft'
+              && !request.resource.data.keys().hasAny(['submittedAt']))
+            || (request.resource.data.status == 'submitted'
+              && request.resource.data.submittedAt == request.time));
+        allow update: if (
+            isActiveStudent(studentId)
+            && resource.data.studentId == studentId
+            && resource.data.status == 'draft'
+            && get(/databases/$(database)/documents/assignments/$(assignmentId)).data.status == 'published'
+            && isEnrolled(
+              get(/databases/$(database)/documents/assignments/$(assignmentId)).data.courseId,
+              studentId
+            )
+            && request.resource.data.studentId == studentId
+            && request.resource.data.answer is string
+            && request.resource.data.answer.size() <= 20000
+            && request.resource.data.status in ['draft', 'submitted']
+            && request.resource.data.updatedAt == request.time
+            && request.resource.data.diff(resource.data).affectedKeys()
+              .hasOnly(['answer', 'status', 'updatedAt', 'submittedAt'])
+            && ((request.resource.data.status == 'draft'
+                && !request.resource.data.keys().hasAny(['submittedAt']))
+              || (request.resource.data.status == 'submitted'
+                && request.resource.data.submittedAt == request.time))
+          ) || (
+            signedIn()
+            && ownsAssignment(assignmentId)
+            && resource.data.status == 'submitted'
+            && request.resource.data.status == 'graded'
+            && request.resource.data.gradedBy == request.auth.uid
+            && request.resource.data.gradedAt == request.time
+            && request.resource.data.score is number
+            && request.resource.data.score >= 0
+            && request.resource.data.score
+              <= get(/databases/$(database)/documents/assignments/$(assignmentId)).data.maxScore
+            && request.resource.data.feedback is string
+            && request.resource.data.feedback.size() <= 5000
+            && request.resource.data.diff(resource.data).affectedKeys()
+              .hasOnly(['score', 'feedback', 'status', 'gradedBy', 'gradedAt'])
+          );
+        allow delete: if false;
+      }
     }
   }
 }
