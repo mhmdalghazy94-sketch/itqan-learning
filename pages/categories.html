@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f8f4">
+    <meta name="description" content="اكتشف مجالات التعلم في بوابة إتقان، واستعرض المنصات التعليمية التابعة لكل مجال.">
+    <title>مجالات التعلم | إتقان للتعلم</title>
+    <link rel="stylesheet" href="../src/css/variables.css">
+    <link rel="stylesheet" href="../src/css/reset.css">
+    <link rel="stylesheet" href="../src/css/main.css">
+    <link rel="stylesheet" href="../src/css/layout.css">
+    <link rel="stylesheet" href="../src/css/components.css">
+    <link rel="stylesheet" href="../src/css/pages/categories.css">
+    <link rel="stylesheet" href="../src/css/responsive.css">
+    <script type="module" src="../src/js/pages/categories.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">انتقل إلى المحتوى</a>
+    <div id="site-header"></div>
+
+    <main id="main-content" class="categories-page">
+      <section class="categories-hero" aria-labelledby="page-title">
+        <div class="section-shell categories-hero__inner">
+          <p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span> مسارات للمعرفة</p>
+          <h1 id="page-title">اكتشف مجالات التعلم</h1>
+          <p>تصفّح تخصصات إتقان التعليمية، واختر المجال الذي يناسب اهتماماتك لتصل إلى منصاته بسهولة.</p>
+          <a class="categories-hero__link" href="#learning-fields">استكشف المجالات <span aria-hidden="true">↓</span></a>
+          <span class="categories-hero__decoration" aria-hidden="true">م</span>
+        </div>
+      </section>
+
+      <section class="section categories-directory" id="learning-fields" aria-labelledby="categories-title">
+        <div class="section-shell">
+          <div class="section-heading categories-heading">
+            <div>
+              <p class="eyebrow">تعلّم ما يهمك</p>
+              <h2 id="categories-title">المجالات التعليمية</h2>
+              <p class="section-heading__description">اختر مجالًا لاستعراض موضوعاته والمنصات التعليمية المرتبطة به.</p>
+            </div>
+            <a class="text-link" href="./platforms.html">استعرض كل المنصات <span aria-hidden="true">←</span></a>
+          </div>
+
+          <label class="category-search">
+            <span class="category-search__icon" aria-hidden="true">⌕</span>
+            <span class="visually-hidden">ابحث عن مجال تعليمي</span>
+            <input id="category-search" type="search" placeholder="ابحث عن مجال أو موضوع..." autocomplete="off">
+          </label>
+          <p class="category-results-count" id="category-results-count" role="status" aria-live="polite">جارٍ تحميل المجالات…</p>
+
+          <div class="category-grid categories-grid" id="categories-grid" aria-live="polite">
+            <p class="content-message" role="status">جارٍ تحميل المجالات التعليمية…</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section category-platforms" id="category-platforms" aria-labelledby="category-platforms-title" hidden>
+        <div class="section-shell">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">منصات متخصصة</p>
+              <h2 id="category-platforms-title">منصات المجال</h2>
+              <p class="section-heading__description" id="selected-category-description"></p>
+            </div>
+            <a class="text-link" href="./platforms.html">جميع المنصات <span aria-hidden="true">←</span></a>
+          </div>
+          <div class="platform-grid" id="category-platform-grid" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="section suggested-categories" aria-labelledby="suggested-categories-title">
+        <div class="section-shell">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">وسّع آفاقك</p>
+              <h2 id="suggested-categories-title">مجالات أخرى قد تهمك</h2>
+              <p class="section-heading__description">اكتشف تخصصات أخرى، وتعرّف على المنصات عند توفرها.</p>
+            </div>
+          </div>
+          <div class="category-grid suggested-categories__grid" id="suggested-categories-grid">
+            <p class="content-message" role="status">جارٍ تحميل المجالات…</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="categories-cta section-shell" aria-labelledby="categories-cta-title">
+        <div>
+          <p class="eyebrow">ابدأ من المجال الأقرب إليك</p>
+          <h2 id="categories-cta-title">لكل اهتمام طريق للتعلّم</h2>
+          <p>استعرض المنصات التعليمية واكتشف ما يناسب أهدافك.</p>
+        </div>
+        <a class="button button--light" href="./platforms.html">تصفّح المنصات <span aria-hidden="true">←</span></a>
+        <span class="categories-cta__decoration" aria-hidden="true">م</span>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+    <noscript><p class="noscript-message">يرجى تفعيل JavaScript لتحميل المجالات والمنصات التابعة لها.</p></noscript>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f8f4">
+    <meta name="description" content="تعرّف على المنصة التعليمية ومجالها وحالتها والمحتوى المتوقع فيها.">
+    <title>تفاصيل المنصة | إتقان للتعلم</title>
+    <link rel="stylesheet" href="../src/css/variables.css">
+    <link rel="stylesheet" href="../src/css/reset.css">
+    <link rel="stylesheet" href="../src/css/main.css">
+    <link rel="stylesheet" href="../src/css/layout.css">
+    <link rel="stylesheet" href="../src/css/components.css">
+    <link rel="stylesheet" href="../src/css/pages/platform-details.css">
+    <link rel="stylesheet" href="../src/css/responsive.css">
+    <script type="module" src="../src/js/platform-details.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">انتقل إلى المحتوى</a>
+    <div id="site-header"></div>
+
+    <main id="main-content" class="platform-details-page">
+      <div class="section-shell">
+        <nav class="breadcrumbs" aria-label="مسار التنقل">
+          <a href="../index.html">الرئيسية</a>
+          <span aria-hidden="true">/</span>
+          <a href="./platforms.html">المنصات</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page" id="breadcrumb-platform">تفاصيل المنصة</span>
+        </nav>
+      </div>
+
+      <div id="platform-details-content" aria-live="polite">
+        <div class="section-shell">
+          <p class="content-message" role="status">جارٍ تحميل تفاصيل المنصة…</p>
+        </div>
+      </div>
+
+      <section class="section similar-platforms" id="similar-platforms" aria-labelledby="similar-title" hidden>
+        <div class="section-shell">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">واصل الاستكشاف</p>
+              <h2 id="similar-title">منصات في المجال نفسه</h2>
+              <p class="section-heading__description">قد تجد في هذه المنصات مسارات أخرى تهمك.</p>
+            </div>
+            <a class="text-link" href="./platforms.html">جميع المنصات <span aria-hidden="true">←</span></a>
+          </div>
+          <div class="platform-grid" id="similar-platform-grid"></div>
+        </div>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+    <noscript><p class="noscript-message">يرجى تفعيل JavaScript لتحميل تفاصيل المنصة.</p></noscript>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f8f4">
+    <meta name="description" content="استكشف منصات إتقان التعليمية المتخصصة واختر المجال الذي يناسب أهدافك واهتماماتك.">
+    <title>المنصات التعليمية | إتقان للتعلم</title>
+    <link rel="stylesheet" href="../src/css/variables.css">
+    <link rel="stylesheet" href="../src/css/reset.css">
+    <link rel="stylesheet" href="../src/css/main.css">
+    <link rel="stylesheet" href="../src/css/layout.css">
+    <link rel="stylesheet" href="../src/css/components.css">
+    <link rel="stylesheet" href="../src/css/pages/platforms.css">
+    <link rel="stylesheet" href="../src/css/responsive.css">
+    <script type="module" src="../src/js/platforms.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">انتقل إلى المحتوى</a>
+    <div id="site-header"></div>
+
+    <main id="main-content" class="platforms-page">
+      <section class="platforms-hero" aria-labelledby="page-title">
+        <div class="section-shell platforms-hero__inner">
+          <p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span> دليلك إلى المعرفة</p>
+          <h1 id="page-title">اكتشف منصات إتقان التعليمية</h1>
+          <p>استكشف منصاتنا التعليمية المتخصصة واختر المجال الذي يناسب أهدافك واهتماماتك.</p>
+          <a class="platforms-hero__link" href="#platform-directory">ابدأ الاستكشاف <span aria-hidden="true">↓</span></a>
+          <span class="platforms-hero__decoration" aria-hidden="true">إ</span>
+        </div>
+      </section>
+
+      <section class="section platform-directory" id="platform-directory" aria-labelledby="directory-title">
+        <div class="section-shell">
+          <div class="section-heading platform-directory__heading">
+            <div>
+              <p class="eyebrow">منظومة واحدة، مجالات متعددة</p>
+              <h2 id="directory-title">جميع المنصات</h2>
+              <p class="section-heading__description">ابحث في المنصات أو صفّها حسب المجال وحالة الإطلاق.</p>
+            </div>
+          </div>
+
+          <form class="platform-filters" id="platform-filters" role="search" aria-label="البحث وتصفية المنصات">
+            <label class="platform-search">
+              <span class="platform-search__icon" aria-hidden="true">⌕</span>
+              <span class="visually-hidden">ابحث عن منصة</span>
+              <input id="platform-search" name="q" type="search" placeholder="ابحث باسم المنصة أو مجالها..." autocomplete="off">
+            </label>
+            <label class="platform-filter">
+              <span>المجال التعليمي</span>
+              <select id="category-filter" name="category">
+                <option value="all">جميع المجالات</option>
+              </select>
+            </label>
+            <label class="platform-filter">
+              <span>حالة المنصة</span>
+              <select id="status-filter" name="status">
+                <option value="all">جميع الحالات</option>
+                <option value="available">متاحة</option>
+                <option value="in-development">قيد التطوير</option>
+                <option value="coming-soon">قريبًا</option>
+                <option value="experimental">تجريبية</option>
+                <option value="maintenance">تحت الصيانة</option>
+              </select>
+            </label>
+          </form>
+
+          <div class="platform-directory__meta">
+            <p id="platform-count" class="platform-count" role="status" aria-live="polite">جارٍ تحميل المنصات…</p>
+            <button class="platform-clear" id="clear-filters" type="button" hidden>مسح عوامل التصفية</button>
+          </div>
+          <div class="platform-grid" id="platform-grid" aria-live="polite">
+            <p class="content-message" role="status">جارٍ تحميل المنصات…</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="platforms-note section-shell" aria-label="معلومات عن المنصات">
+        <span class="platforms-note__icon" aria-hidden="true">✦</span>
+        <p>بوابة إتقان تعرّفك بالمنصات ومجالاتها؛ أما الدورات والدروس فتجدها داخل كل منصة عند إتاحتها.</p>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+    <noscript><p class="noscript-message">يرجى تفعيل JavaScript لتحميل المنصات واستخدام البحث والتصفية.</p></noscript>
+  </body>
+</html>

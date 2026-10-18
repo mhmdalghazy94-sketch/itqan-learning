@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="قدّم طلب إنشاء حساب معلم في إتقان للتعلم.">
+    <title>إنشاء حساب معلم | إتقان للتعلم</title>
+    <link rel="stylesheet" href="../src/css/variables.css">
+    <link rel="stylesheet" href="../src/css/reset.css">
+    <link rel="stylesheet" href="../src/css/main.css">
+    <link rel="stylesheet" href="../src/css/layout.css">
+    <link rel="stylesheet" href="../src/css/components.css">
+    <link rel="stylesheet" href="../src/css/pages/auth.css">
+    <link rel="stylesheet" href="../src/css/responsive.css">
+    <script type="module" src="../src/js/auth/forms.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">انتقل إلى المحتوى</a>
+    <div id="site-header"></div>
+    <main id="main-content" class="auth-page section-shell">
+      <header class="auth-intro">
+        <p class="eyebrow">انضم إلى مجتمع المعلمين</p>
+        <h1>إنشاء حساب معلم</h1>
+        <p>أرسل بياناتك الأساسية وتخصصك لبدء طلب الانضمام.</p>
+      </header>
+      <section class="auth-panel" aria-label="نموذج التسجيل">
+        <p class="auth-note">تقديم الطلب لا يمنح صلاحيات التدريس تلقائيًا. تُحدد حالة الحساب من الخادم بعد المراجعة.</p>
+        <form class="auth-form" data-auth-form="register" data-role="teacher">
+          <div class="auth-field">
+            <label for="teacher-full-name">الاسم الكامل</label>
+            <input id="teacher-full-name" name="fullName" autocomplete="name" minlength="2" maxlength="100" required>
+          </div>
+          <div class="auth-field">
+            <label for="teacher-email">البريد الإلكتروني</label>
+            <input id="teacher-email" name="email" type="email" autocomplete="email" maxlength="254" required>
+          </div>
+          <div class="auth-field">
+            <label for="teacher-specialization">التخصص العلمي</label>
+            <input id="teacher-specialization" name="specialization" maxlength="120" required>
+          </div>
+          <div class="auth-field">
+            <label for="teacher-bio">نبذة عنك <span class="auth-field__hint">(اختياري)</span></label>
+            <textarea id="teacher-bio" name="bio" maxlength="1000"></textarea>
+          </div>
+          <div class="auth-field">
+            <label for="teacher-password">كلمة المرور</label>
+            <input id="teacher-password" name="password" type="password" autocomplete="new-password" minlength="8" required>
+            <span class="auth-field__hint">استخدم 8 أحرف على الأقل.</span>
+          </div>
+          <div class="auth-field">
+            <label for="teacher-confirm-password">تأكيد كلمة المرور</label>
+            <input id="teacher-confirm-password" name="confirmPassword" type="password" autocomplete="new-password" minlength="8" required>
+          </div>
+          <label class="auth-terms">
+            <input name="acceptTerms" type="checkbox" required>
+            <span>أوافق على شروط استخدام المنصة وسياسة الخصوصية.</span>
+          </label>
+          <div class="auth-form__actions">
+            <button class="button button--primary" type="submit" disabled>إرسال طلب إنشاء الحساب</button>
+            <p class="auth-status" data-auth-status aria-live="polite"></p>
+          </div>
+        </form>
+        <nav class="auth-links" aria-label="روابط الحساب">
+          <a href="./login.html">لديك حساب؟ تسجيل الدخول</a>
+          <a href="./register.html">تغيير نوع الحساب</a>
+        </nav>
+      </section>
+      <noscript><p class="auth-note">لتقديم طلب المعلم، فعّل JavaScript في المتصفح.</p></noscript>
+    </main>
+    <div id="site-footer"></div>
+  </body>
+</html>

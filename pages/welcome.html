@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f8f4">
+    <meta name="description" content="مرحبًا بك في إتقان للتعلم. استكشف المجالات التعليمية والمكتبة، وتابع رحلتك التعليمية.">
+    <title>مرحبًا بك | إتقان للتعلم</title>
+    <link rel="stylesheet" href="../src/css/variables.css">
+    <link rel="stylesheet" href="../src/css/reset.css">
+    <link rel="stylesheet" href="../src/css/main.css">
+    <link rel="stylesheet" href="../src/css/layout.css">
+    <link rel="stylesheet" href="../src/css/components.css">
+    <link rel="stylesheet" href="../src/css/pages/welcome.css">
+    <link rel="stylesheet" href="../src/css/responsive.css">
+    <script type="module" src="../src/js/pages/welcome.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">انتقل إلى المحتوى</a>
+    <div id="site-header"></div>
+
+    <main id="main-content" aria-busy="true">
+      <nav class="welcome-local-nav section-shell" aria-label="روابط سريعة">
+        <a href="../index.html">الرئيسية</a>
+        <a href="../pages/sciences.html">مجالات العلوم</a>
+        <a href="#welcome-library">المكتبة</a>
+        <a href="#site-guide">دليل الموقع</a>
+        <a href="../pages/contact.html">تواصل معنا</a>
+      </nav>
+
+      <section class="welcome-hero section-shell" aria-labelledby="welcome-title">
+        <div class="welcome-hero__content">
+          <p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span> بوابتك إلى المعرفة</p>
+          <h1 id="welcome-title">أهلًا بك في إتقان للتعلم</h1>
+          <p class="welcome-hero__lead" data-welcome-copy>
+            استكشف مجالات العلم، واكتشف الدروس والدورات والمسارات التعليمية المتاحة.
+          </p>
+          <div class="welcome-hero__actions" data-guest-actions>
+            <a class="button button--primary" href="../pages/sciences.html">استكشف مجالات العلوم</a>
+            <a class="button button--secondary" href="../pages/student/library/library-catalog.html">تصفح المكتبة</a>
+            <a class="button button--secondary" href="../pages/register.html">إنشاء حساب</a>
+            <a class="welcome-login-link" href="../pages/login.html">تسجيل الدخول</a>
+          </div>
+          <div class="welcome-hero__actions" data-role-actions hidden></div>
+          <p class="welcome-session-status" data-session-status role="status" aria-live="polite">
+            جارٍ التحقق من حالة الحساب…
+          </p>
+        </div>
+        <aside class="welcome-account-card" data-account-card hidden aria-label="معلومات الحساب">
+          <span class="welcome-account-card__avatar" aria-hidden="true" data-account-initial>إ</span>
+          <div>
+            <p class="welcome-account-card__label">حسابك</p>
+            <p class="welcome-account-card__name" data-account-name></p>
+            <p class="welcome-account-card__role" data-account-role></p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section welcome-role-section" data-member-section hidden aria-labelledby="role-actions-title">
+        <div class="section-shell">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">مساحتك التعليمية</p>
+              <h2 id="role-actions-title">تابع من حيث وصلت</h2>
+              <p class="section-heading__description" data-role-description></p>
+            </div>
+          </div>
+          <div class="welcome-action-grid" data-member-links></div>
+        </div>
+      </section>
+
+      <section class="section section--categories" id="site-guide" aria-labelledby="science-title">
+        <div class="section-shell">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">مسارات متنوعة</p>
+              <h2 id="science-title">مجالات العلوم</h2>
+              <p class="section-heading__description">اختر مجالًا يثير فضولك، واستكشف منصاته التعليمية.</p>
+            </div>
+            <a class="text-link" href="../pages/sciences.html">جميع المجالات <span aria-hidden="true">←</span></a>
+          </div>
+          <div class="welcome-card-grid" data-science-grid aria-live="polite">
+            <p class="content-message" role="status">جارٍ تحميل المجالات…</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section welcome-library-section" id="welcome-library" aria-labelledby="library-title">
+        <div class="section-shell welcome-library-card">
+          <div class="welcome-library-card__icon" aria-hidden="true">▤</div>
+          <div>
+            <p class="eyebrow">مصادر للقراءة والبحث</p>
+            <h2 id="library-title">المكتبة التعليمية</h2>
+            <p>تصفح الكتب والمراجع والمواد التعليمية المتاحة في مكتبة إتقان.</p>
+          </div>
+          <a class="button button--primary" href="../pages/student/library/library-catalog.html">استكشف المكتبة</a>
+        </div>
+      </section>
+
+      <section class="section welcome-courses-section" aria-labelledby="courses-title">
+        <div class="section-shell welcome-courses-card">
+          <div>
+            <p class="eyebrow">خطوتك التالية</p>
+            <h2 id="courses-title">اكتشف الدورات والمنصات</h2>
+            <p>تعرّف على المنصات التعليمية والدورات التي تناسب اهتماماتك.</p>
+          </div>
+          <a class="button button--secondary" href="../pages/platforms.html">تصفح المنصات والدورات</a>
+        </div>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+  </body>
+</html>

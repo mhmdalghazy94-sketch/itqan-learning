@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="تعليمات التحقق من البريد الإلكتروني لحساب إتقان.">
+    <title>التحقق من البريد الإلكتروني | إتقان للتعلم</title>
+    <link rel="stylesheet" href="../src/css/variables.css">
+    <link rel="stylesheet" href="../src/css/reset.css">
+    <link rel="stylesheet" href="../src/css/main.css">
+    <link rel="stylesheet" href="../src/css/layout.css">
+    <link rel="stylesheet" href="../src/css/components.css">
+    <link rel="stylesheet" href="../src/css/pages/auth.css">
+    <link rel="stylesheet" href="../src/css/responsive.css">
+    <script type="module" src="../src/js/auth/forms.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">انتقل إلى المحتوى</a>
+    <div id="site-header"></div>
+    <main id="main-content" class="auth-page section-shell">
+      <section class="auth-pending">
+        <span class="auth-pending__icon" aria-hidden="true">✉</span>
+        <p class="eyebrow">خطوة أخيرة</p>
+        <h1>تحقق من بريدك الإلكتروني</h1>
+        <p>افتح رسالة التحقق المرسلة إلى بريدك واتبع الرابط لتأكيد ملكية الحساب. قد تصل الرسالة إلى البريد غير الهام.</p>
+        <form class="auth-form" data-auth-form="verify-email">
+          <div class="auth-form__actions">
+            <button class="button button--primary" type="submit" disabled>إعادة إرسال رسالة التحقق</button>
+            <p class="auth-status" data-auth-status aria-live="polite"></p>
+          </div>
+        </form>
+        <nav class="auth-links" aria-label="روابط الحساب"><a href="./login.html">العودة إلى تسجيل الدخول</a></nav>
+      </section>
+      <noscript><p class="auth-note">لإعادة إرسال التحقق، فعّل JavaScript في المتصفح.</p></noscript>
+    </main>
+    <div id="site-footer"></div>
+  </body>
+</html>
